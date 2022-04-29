@@ -7,7 +7,7 @@
 
 #include <cmath>
 #include <map>
-#include <boost/variant.hpp>
+
 
 // Arithmatic Logic Operator
 
