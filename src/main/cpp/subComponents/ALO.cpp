@@ -7,6 +7,6 @@
 ALO::ALO() = default;
 
 double ALO::getRPMFromDistance(double distance) {
-    
+    for(int i = 0)
     
 }

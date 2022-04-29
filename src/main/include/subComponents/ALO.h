@@ -7,6 +7,7 @@
 
 #include <cmath>
 #include <map>
+#include <boost/variant.hpp>
 
 // Arithmatic Logic Operator
 
@@ -14,8 +15,10 @@ class ALO {
  public:
   ALO();
 
+  
   double getRPMFromDistance(double distanceKey);
   std::map<double, double> distanceMap;
+  std::map<double, double>::iterator distanceMapItr;
   
 };
 
