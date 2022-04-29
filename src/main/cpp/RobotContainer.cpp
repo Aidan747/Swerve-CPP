@@ -11,6 +11,7 @@ RobotContainer::RobotContainer() :
   backRightModule(Constants::DriveTrainConstants::backRightDriveMotorID, Constants::DriveTrainConstants::backRightTurnMotorID),             
   backLeftModule(Constants::DriveTrainConstants::backLeftDriveMotorID, Constants::DriveTrainConstants::backLeftTurnMotorID),
   driverStick(Constants::Controllers::driverControllerID),
+  driveTrainSub(frontRightModule, frontLeftModule, backRightModule, backLeftModule),
   m_autonomousCommand(&m_subsystem) {
   // Initialize all of your commands and subsystems here
   

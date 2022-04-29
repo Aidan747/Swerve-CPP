@@ -4,9 +4,18 @@
 
 #include "subComponents/ALO.h"
 
-ALO::ALO() = default;
+ALO::ALO() {
+    std::thread t0(initialize);
+}
+
+void ALO::initialize() {
+}
 
 double ALO::getRPMFromDistance(double distance) {
-    for(int i = 0)
+    for(distanceMapItr = distanceMap.begin(); distanceMapItr != distanceMap.end(); distanceMapItr++) {
+        if(distance = distanceMapItr->second || differenceFromKey < 0.5) {
+            
+        }
+    }
     
 }

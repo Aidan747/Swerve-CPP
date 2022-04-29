@@ -7,18 +7,25 @@
 
 #include <cmath>
 #include <map>
-#include <boost/variant.hpp>
+#include <thread> 
+#include <functional>
+#include "RobotContainer.h"
+
 
 // Arithmatic Logic Operator
 
 class ALO {
  public:
   ALO();
-
-  
   double getRPMFromDistance(double distanceKey);
+  void initialize();
+
+ private:
+  double differenceFromKey;
   std::map<double, double> distanceMap;
   std::map<double, double>::iterator distanceMapItr;
+
+  
   
 };
 

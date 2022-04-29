@@ -7,7 +7,10 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+  auto genericNetworkTable = nt::NetworkTableInstance::GetDefault();
+  auto limelightNetworkTable = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+}
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -19,6 +22,7 @@ void Robot::RobotInit() {}
  */
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
+  limelight::xOffset = nt::NetworkTableInstance::GetDefault().GetTable("limelight") -> GetNumber("tx",0.0);
 }
 
 /**
