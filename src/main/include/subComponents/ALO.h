@@ -9,13 +9,14 @@
 #include <map>
 
 
+
 // Arithmatic Logic Operator
 
 class ALO {
  public:
   ALO();
 
-  
+  double curveSpeed(double joystickInput);
   double getRPMFromDistance(double distanceKey);
   std::map<double, double> distanceMap;
   std::map<double, double>::iterator distanceMapItr;

@@ -9,6 +9,9 @@
 #include <cmath>
 #include <memory>
 #include <vector>
+#include <list>
+
+
 
 
 using std::vector;
@@ -16,7 +19,8 @@ using std::vector;
 class Updater {
  public:
   Updater();
-  static void update();
+
+
 };
 
 #endif

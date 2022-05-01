@@ -2,16 +2,20 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#pragma once
+#ifndef RobotContainer_H
+#define RobotContainer_H
 
 #include <frc2/command/Command.h>
 #include <frc/Joystick.h>
 
+
 #include "commands/ExampleCommand.h"
 
 #include "subsystems/ExampleSubsystem.h"
+#include "subsystems/DriveTrain.h"
 
 #include "subComponents/SwerveModule.h"
+#include "subComponents/ALO.h"
 
 
 using frc::Joystick;
@@ -26,10 +30,13 @@ using frc::Joystick;
 class RobotContainer {
  public:
   RobotContainer();
+  ~RobotContainer();
 
   frc2::Command* GetAutonomousCommand();
 
-  Joystick driverStick;
+  inline static ALO* ALO = new ALO();
+  inline static Joystick* driverStick = new Joystick(1);
+
   void ConfigureButtonBindings();
 
  private:
@@ -41,4 +48,9 @@ class RobotContainer {
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
 
+
+
+
 };
+
+#endif

@@ -5,13 +5,23 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include <frc/Joystick.h>
+
+#include "RobotContainer.h"
+
 #include "subComponents/SwerveModule.h"
 
+
+using frc::Joystick;
 
 class DriveTrain : public frc2::SubsystemBase {
  public:
   DriveTrain();
   DriveTrain(SwerveModule frontRight, SwerveModule frontLeft, SwerveModule backRight, SwerveModule backLeft);
+
+  void drive();
+
+  void setAllMotors(double setpoint);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
