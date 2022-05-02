@@ -18,7 +18,7 @@
 #include "subsystems/DriveTrain.h"
 
 #include "subComponents/SwerveModule.h"
-#include "subComponents/ALO.h"
+#include "subComponents/utils/ALO.h"
 
 
 using frc::Joystick;
@@ -56,5 +56,9 @@ class RobotContainer {
 
 
 };
+namespace limelight {
+  double xOffset;
+  double yOffset;
+}
 
 #endif
