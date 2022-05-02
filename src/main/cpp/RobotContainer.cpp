@@ -10,14 +10,16 @@ RobotContainer::RobotContainer() :
   frontLeftModule(Constants::DriveTrainConstants::fowardLeftDriveMotorID, Constants::DriveTrainConstants::fowardLeftTurnMotorID),
   backRightModule(Constants::DriveTrainConstants::backRightDriveMotorID, Constants::DriveTrainConstants::backRightTurnMotorID),             
   backLeftModule(Constants::DriveTrainConstants::backLeftDriveMotorID, Constants::DriveTrainConstants::backLeftTurnMotorID),
-  driverStick(Constants::Controllers::driverControllerID),
-  driveTrainSub(frontRightModule, frontLeftModule, backRightModule, backLeftModule),
   m_autonomousCommand(&m_subsystem) {
   // Initialize all of your commands and subsystems here
-  
+  DriveTrain driveTrainSub(frontRightModule, frontLeftModule, backRightModule, backLeftModule);
   // Configure the button bindings
   ConfigureButtonBindings();
 }
+RobotContainer::~RobotContainer() {
+  delete driverStick;
+}
+
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here

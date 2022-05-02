@@ -4,18 +4,20 @@
 
 #include "subComponents/ALO.h"
 
-ALO::ALO() {
-    std::thread t0(initialize);
-}
+#define REGRESSION(x) 2276.083 - (-84.4069/-0.05685471)*(1 - std::exp((0.05685471*x)))
 
-void ALO::initialize() {
-}
+ALO::ALO() = default;
 
 double ALO::getRPMFromDistance(double distance) {
     for(distanceMapItr = distanceMap.begin(); distanceMapItr != distanceMap.end(); distanceMapItr++) {
-        if(distance = distanceMapItr->second || differenceFromKey < 0.5) {
-            
+        if(abs(distanceMapItr->first - distance) > 0.75 ) {
+            return distanceMapItr->second;
         }
     }
-    
+    double calcualtedRPM = REGRESSION(distance);
+    return calcualtedRPM; 
+}
+
+double ALO::curveSpeed(double inputSpeed) {
+    return 0.6914895 + (0.08625241 - 0.6914895) / (1 + pow((inputSpeed / 0.3315671), 11.36875));
 }

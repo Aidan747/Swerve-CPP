@@ -11,6 +11,17 @@ DriveTrain::DriveTrain(SwerveModule frontRightModule, SwerveModule frontLeftModu
     this->backRightModule = backRightModule;
     this->backLeftModule = backLeftModule;
 }
+void DriveTrain::setAllMotors(double setpoint) {
+    frontRightModule.setSpeed(setpoint);
+}
+
+void DriveTrain::drive() {
+    double speed = RobotContainer::driverStick->GetRawAxis(1);
+    frontRightModule.setSpeed(speed, true);
+    frontLeftModule.setSpeed(speed, true);
+    backRightModule.setSpeed(speed, true);
+    backLeftModule.setSpeed(speed, true);
+}
 
 // This method will be called once per scheduler run
 void DriveTrain::Periodic() {}

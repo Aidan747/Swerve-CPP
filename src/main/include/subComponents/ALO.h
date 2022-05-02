@@ -7,9 +7,6 @@
 
 #include <cmath>
 #include <map>
-#include <thread> 
-#include <functional>
-#include "RobotContainer.h"
 
 
 // Arithmatic Logic Operator
@@ -17,6 +14,8 @@
 class ALO {
  public:
   ALO();
+
+  double curveSpeed(double joystickInput);
   double getRPMFromDistance(double distanceKey);
   void initialize();
 

@@ -13,13 +13,10 @@ SwerveModule::SwerveModule(int driveMotorID, int turnMotorID) {
     this->turnMotor = turnMotor;
 }
 
-void SwerveModule::setSpeed(double input, bool manualSet, bool isCurved, double hardSetpoint) {
+void SwerveModule::setSpeed(double input, bool isCurved) {
     double curvedSpeed = 0.6914895 + (0.08625241 - 0.6914895) / (1 + pow((input / 0.3315671),11.36875));
     if(isCurved) {
         driveMotor->Set(curvedSpeed);
-    }
-    else if(hardSetpoint != 0) {
-        driveMotor->Set(hardSetpoint);
     }
     else {
         driveMotor->Set(input);

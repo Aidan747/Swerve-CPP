@@ -19,7 +19,7 @@ class SwerveModule {
     public:
         SwerveModule(int driveMotorID, int turnMotorID);
         SwerveModule();
-        void setSpeed(double input, bool manualSet, bool isCurved = false, double hardSetpoint = 0);
+        void setSpeed(double input, bool isCurved = false);
         double getModuleRotation();
         double getSetpoint();
         double getVelocity(string unit = " ");

@@ -11,12 +11,14 @@
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
 
+
 #include "commands/ExampleCommand.h"
 
 #include "subsystems/ExampleSubsystem.h"
 #include "subsystems/DriveTrain.h"
 
 #include "subComponents/SwerveModule.h"
+#include "subComponents/ALO.h"
 
 
 using frc::Joystick;
@@ -31,11 +33,13 @@ using frc::Joystick;
 class RobotContainer {
  public:
   RobotContainer();
+  ~RobotContainer();
 
   frc2::Command* GetAutonomousCommand();
 
+  inline static ALO* ALO = new ALO();
+  inline static Joystick* driverStick = new Joystick(1);
 
-  Joystick driverStick;
   void ConfigureButtonBindings();
 
  private:
@@ -48,10 +52,9 @@ class RobotContainer {
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
 
+
+
+
 };
-namespace limelight {
-  double xOffset;
-  double yOffset;
-}
 
 #endif

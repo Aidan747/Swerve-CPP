@@ -16,6 +16,10 @@
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
   "files.associations": {
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "matrixfunctions": "cpp",
+    "cmath": "cpp",
+    "complex": "cpp",
+    "random": "cpp"
   }
 }
