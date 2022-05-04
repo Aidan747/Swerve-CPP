@@ -59,6 +59,7 @@ class RobotContainer {
 namespace limelight {
   double xOffset;
   double yOffset;
+  bool hasTarget;
 }
 
 #endif
