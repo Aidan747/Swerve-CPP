@@ -23,8 +23,7 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
-  limelight::xOffset = nt::NetworkTableInstance::GetDefault().GetTable("limelight") -> GetNumber("tx",0.0);
-  limelight::yOffset = nt::NetworkTableInstance::GetDefault().GetTable("limelight") -> GetNumber("ty",0.0);
+  
 }
 
 /**

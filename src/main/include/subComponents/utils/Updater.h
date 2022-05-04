@@ -10,8 +10,10 @@
 #include <memory>
 #include <vector>
 #include <list>
-
-
+#include <any>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <frc2/command/SubsystemBase.h>
+#include <RobotContainer.h>
 
 
 using std::vector;
@@ -19,8 +21,8 @@ using std::vector;
 class Updater {
  public:
   Updater();
-
-
+  void initializeSystemUpdates();
+  void initalizeSmartDashboardUpdates();
 };
 
 #endif
