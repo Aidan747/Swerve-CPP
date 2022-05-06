@@ -5,6 +5,7 @@
 #include "RobotContainer.h"
 #include "Constants.h"
 
+
 RobotContainer::RobotContainer() :
   frontRightModule(Constants::DriveTrainConstants::fowardRightDriveMotorID, Constants::DriveTrainConstants::fowardRightTurnMotorID),
   frontLeftModule(Constants::DriveTrainConstants::fowardLeftDriveMotorID, Constants::DriveTrainConstants::fowardLeftTurnMotorID),
@@ -23,6 +24,7 @@ RobotContainer::~RobotContainer() {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
+  testButton.WhenPressed(test);
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

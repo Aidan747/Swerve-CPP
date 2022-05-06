@@ -22,3 +22,14 @@ double ALO::getRPMFromDistance(double distance) {
 double ALO::curveSpeed(double inputSpeed) {
     return SPEED_CURVE(inputSpeed);
 }
+double ALO::maxFromVector(std::vector<double> arr) {
+    double max = *max_element(arr.begin(), arr.end());
+    return max;
+}
+std::vector<double> ALO::pushToVector(std::vector<double> arr, double v1, double v2, double v3, double v4) {
+    arr.push_back(v1);
+    arr.push_back(v2);
+    arr.push_back(v3);
+    arr.push_back(v4);
+    return arr;
+}

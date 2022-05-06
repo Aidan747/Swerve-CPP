@@ -6,7 +6,10 @@
 #define RobotContainer_H
 
 #include <frc2/command/Command.h>
+#include <frc2/command/InstantCommand.h>
 #include <frc/Joystick.h>
+#include <frc/XboxController.h>
+#include <frc2/command/button/JoystickButton.h>
 #include "networktables/NetworkTable.h"
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
@@ -22,6 +25,9 @@
 
 
 using frc::Joystick;
+using frc::XboxController;
+
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -37,11 +43,15 @@ class RobotContainer {
 
   frc2::Command* GetAutonomousCommand();
 
-  inline static ALO* ALO = new ALO();
   inline static Joystick* driverStick = new Joystick(1);
+  inline static XboxController* buttonController = new XboxController(2);
+
+  frc2::JoystickButton testButton{buttonController,2};
 
   void ConfigureButtonBindings();
 
+  frc2::InstantCommand test{[this] {driveTrainSub.drive(1,2,1); }, {&driveTrainSub}};
+  
 
  private:
   // The robot's subsystems and commands are defined here...

@@ -11,6 +11,9 @@
 
 #include "subComponents/SwerveModule.h"
 
+#define WIDTH 10
+#define HEIGHT 10
+
 
 using frc::Joystick;
 
@@ -19,7 +22,7 @@ class DriveTrain : public frc2::SubsystemBase {
   DriveTrain();
   DriveTrain(SwerveModule frontRight, SwerveModule frontLeft, SwerveModule backRight, SwerveModule backLeft);
 
-  void drive();
+  void drive(double xInput, double yInput, double zInput);
 
   void setAllMotors(double setpoint);
 
@@ -36,5 +39,22 @@ class DriveTrain : public frc2::SubsystemBase {
   SwerveModule frontLeftModule;
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
+
+  std::vector<double> speedVector;
+
+  double a;
+  double b;
+  double c;
+  double d;
+  
+  double frontRightSpeed;
+  double frontLeftSpeed;
+  double backRightSpeed;
+  double backLeftSpeed;
+
+  double frontRightRotation;
+  double backRightRotation;
+  double frontLeftRotation;
+  double backLeftRotaion;
   
 };

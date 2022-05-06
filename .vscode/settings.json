@@ -20,6 +20,9 @@
     "matrixfunctions": "cpp",
     "cmath": "cpp",
     "complex": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
   }
 }

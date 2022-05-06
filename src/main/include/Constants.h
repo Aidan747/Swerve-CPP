@@ -31,6 +31,12 @@ namespace Constants
         int backLeftDriveMotorID = 7;
         int backLeftTurnMotorID = 8;
     }
+    namespace SwerveValues {
+        double a;
+        double b;
+        double c;
+        double d;
+    }
 }
 
 #endif
