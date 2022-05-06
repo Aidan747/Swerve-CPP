@@ -42,6 +42,7 @@ class RobotContainer {
 
   void ConfigureButtonBindings();
 
+
  private:
   // The robot's subsystems and commands are defined here...
   ExampleSubsystem m_subsystem;
@@ -51,10 +52,6 @@ class RobotContainer {
   SwerveModule frontLeftModule;
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
-
-
-
-
 };
 namespace limelight {
   double xOffset;
