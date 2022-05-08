@@ -7,7 +7,6 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Joystick.h>
 
-#include "RobotContainer.h"
 
 #include "subComponents/SwerveModule.h"
 

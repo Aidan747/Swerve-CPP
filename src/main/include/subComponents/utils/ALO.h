@@ -16,19 +16,18 @@ class ALO {
  public:
   ALO();
 
-  static double curveSpeed(double joystickInput);
-  static double getRPMFromDistance(double distanceKey);
+  double curveSpeed(double joystickInput);
+  double getRPMFromDistance(double distanceKey);
   void initialize();
-  static std::vector<double> pushToVector(std::vector<double> arr, double v1, double v2, double v3, double v4);
-  static double maxFromVector(std::vector<double> arr);
+  std::vector<double> pushToVector(std::vector<double> arr, double v1, double v2, double v3, double v4);
+  double maxFromVector(std::vector<double> arr);
+  double convertToAbsolute(double encoderValue);
 
  private:
-  static double differenceFromKey;
-  static std::map<double, double> distanceMap;
-  static std::map<double, double>::iterator distanceMapItr;
+  double differenceFromKey;
+  std::map<double, double> distanceMap;
+  std::map<double, double>::iterator distanceMapItr;
 
-  
-  
 };
 
 #endif

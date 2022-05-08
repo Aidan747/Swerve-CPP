@@ -7,9 +7,15 @@
 #define SHOOTER_REGRESSION(x) 2276.083 - (-84.4069/-0.05685471)*(1 - std::exp((0.05685471*x)))
 #define SPEED_CURVE(x) 0.6914895 + (0.08625241 - 0.6914895) / (1 + pow((inputSpeed / 0.3315671), 11.36875))
 
-ALO::ALO() = default;
+ALO::ALO() {
+    distanceMap[9.676] = 3365.0;
+    distanceMap[13.0545] = 3910;
+    distanceMap[23.141] = 6325;
+}
 
 double ALO::getRPMFromDistance(double distance) {
+    
+
     for(distanceMapItr = distanceMap.begin(); distanceMapItr != distanceMap.end(); distanceMapItr++) {
         if(abs(distanceMapItr->first - distance) > 0.75 ) {
             return distanceMapItr->second;

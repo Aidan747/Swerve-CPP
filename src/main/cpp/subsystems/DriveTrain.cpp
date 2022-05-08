@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "subsystems/DriveTrain.h"
+#include "RobotContainer.h"
 
 DriveTrain::DriveTrain() = default;
 DriveTrain::DriveTrain(SwerveModule frontRightModule, SwerveModule frontLeftModule, SwerveModule backRightModule, SwerveModule backLeftModule) {
@@ -36,8 +37,8 @@ void DriveTrain::drive(double xInput, double yInput, double zInput) {
     backLeftRotaion = atan2(d,d);
 
     // normalizing if calculated speed is greater than 1
-    speedVector = ALO::pushToVector(speedVector,frontRightSpeed, frontLeftSpeed, backLeftSpeed, backRightSpeed);
-    double speedMax = ALO::maxFromVector(speedVector);
+    speedVector = RobotContainer::alo->pushToVector(speedVector,frontRightSpeed, frontLeftSpeed, backLeftSpeed, backRightSpeed);
+    double speedMax = RobotContainer::alo->maxFromVector(speedVector);
     if(speedMax > 1.0) {
         frontRightSpeed = frontRightSpeed / speedMax;
         frontLeftSpeed = frontLeftSpeed / speedMax;

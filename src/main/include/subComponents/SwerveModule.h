@@ -1,15 +1,18 @@
+
+#ifndef SwerveModule_H
+#define SwerveModule_H
+
 #include <ctre/Phoenix.h>
+#include <rev/CANSparkMax.h>
+#include <frc/Encoder.h>
 #include <memory>
 #include <string>
 #include <math.h>
 
 
-
 using std::string;
-
-
-#ifndef SwerveModule_H
-#define SwerveModule_H
+using rev::CANSparkMax;
+using frc::Encoder;
 
 class SwerveModule {
     int driveMotorID;
@@ -23,6 +26,7 @@ class SwerveModule {
         double getModuleRotation();
         double getSetpoint();
         double getVelocity(string unit = " ");
+        double azimuthError(double target);
 
     private:
         double joyInput;
@@ -34,8 +38,9 @@ class SwerveModule {
                 return turnMotorID;
             }
         }
-        WPI_TalonFX* driveMotor = new WPI_TalonFX{1};
-        WPI_TalonFX* turnMotor = new WPI_TalonFX{1};
+        Encoder* moduleEncoder;
+        CANSparkMax* driveMotor;
+        CANSparkMax* turnMotor;
         
 };
 

@@ -43,6 +43,8 @@ class RobotContainer {
 
   frc2::Command* GetAutonomousCommand();
 
+  inline static ALO* alo = new ALO();
+
   inline static Joystick* driverStick = new Joystick(1);
   inline static XboxController* buttonController = new XboxController(2);
 
@@ -50,7 +52,6 @@ class RobotContainer {
 
   void ConfigureButtonBindings();
 
-  frc2::InstantCommand test{[this] {driveTrainSub.drive(1,2,1); }, {&driveTrainSub}};
   
 
  private:
@@ -63,10 +64,5 @@ class RobotContainer {
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
 };
-namespace limelight {
-  double xOffset;
-  double yOffset;
-  bool hasTarget;
-}
 
 #endif
