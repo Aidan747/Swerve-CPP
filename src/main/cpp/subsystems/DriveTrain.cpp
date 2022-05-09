@@ -11,9 +11,15 @@ DriveTrain::DriveTrain(SwerveModule frontRightModule, SwerveModule frontLeftModu
     this->frontLeftModule = frontLeftModule;
     this->backRightModule = backRightModule;
     this->backLeftModule = backLeftModule;
-}
-void DriveTrain::setAllMotors(double setpoint) {
-    frontRightModule.setSpeed(setpoint);
+    try
+    {
+        this->gyro = new AHRS(frc::SPI::kMXP);
+    }
+    catch(const std::exception& e)
+    {
+       frc::SmartDashboard::PutString("Gyro Status", "Not Pluged In");
+    }
+    
 }
 
 void DriveTrain::drive(double xInput, double yInput, double zInput) {
@@ -31,10 +37,10 @@ void DriveTrain::drive(double xInput, double yInput, double zInput) {
     backRightSpeed = sqrt(pow(a,2) + pow(c,2));
     backLeftSpeed = sqrt(pow(a,2) + pow(d,2));
 
-    frontRightRotation = atan2(b,c);
-    frontLeftRotation = atan2(b,d);
-    backRightRotation = atan2(a,c);
-    backLeftRotaion = atan2(d,d);
+    frontRightRotation = (atan2(b,c) / M_PI) * 180;
+    frontLeftRotation = (atan2(b,d) / M_PI) * 180;
+    backRightRotation = (atan2(a,c) / M_PI) * 180;
+    backLeftRotaion = (atan2(d,d) / M_PI) * 180;
 
     // normalizing if calculated speed is greater than 1
     speedVector = RobotContainer::alo->pushToVector(speedVector,frontRightSpeed, frontLeftSpeed, backLeftSpeed, backRightSpeed);

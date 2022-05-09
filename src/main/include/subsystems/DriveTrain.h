@@ -6,8 +6,9 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Joystick.h>
-
-
+#include <AHRS.h>
+#include <frc/SPI.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 #include "subComponents/SwerveModule.h"
 
 #define WIDTH 10
@@ -38,6 +39,8 @@ class DriveTrain : public frc2::SubsystemBase {
   SwerveModule frontLeftModule;
   SwerveModule backRightModule;
   SwerveModule backLeftModule;
+
+  AHRS* gyro = nullptr;
 
   std::vector<double> speedVector;
 

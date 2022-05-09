@@ -6,11 +6,13 @@
 #include "Constants.h"
 
 
+/* CHANGE INITIALIZATION LIST LATER - FINAL PARAMS ARE HARDWARE SPECIFIC */
+
 RobotContainer::RobotContainer() :
-  frontRightModule(Constants::DriveTrainConstants::fowardRightDriveMotorID, Constants::DriveTrainConstants::fowardRightTurnMotorID),
-  frontLeftModule(Constants::DriveTrainConstants::fowardLeftDriveMotorID, Constants::DriveTrainConstants::fowardLeftTurnMotorID),
-  backRightModule(Constants::DriveTrainConstants::backRightDriveMotorID, Constants::DriveTrainConstants::backRightTurnMotorID),             
-  backLeftModule(Constants::DriveTrainConstants::backLeftDriveMotorID, Constants::DriveTrainConstants::backLeftTurnMotorID),
+  frontRightModule(Constants::DriveTrainConstants::fowardRightDriveMotorID, Constants::DriveTrainConstants::fowardRightTurnMotorID, false, false, 1,0,false),
+  frontLeftModule(Constants::DriveTrainConstants::fowardLeftDriveMotorID, Constants::DriveTrainConstants::fowardLeftTurnMotorID, false, false, 1,0,false),
+  backRightModule(Constants::DriveTrainConstants::backRightDriveMotorID, Constants::DriveTrainConstants::backRightTurnMotorID, false, false, 1,0,false),             
+  backLeftModule(Constants::DriveTrainConstants::backLeftDriveMotorID, Constants::DriveTrainConstants::backLeftTurnMotorID, false, false, 1,0,false),
   driveTrainSub(frontRightModule, frontLeftModule, backRightModule, backLeftModule),
   m_autonomousCommand(&m_subsystem) {
   // Initialize all of your commands and subsystems here
