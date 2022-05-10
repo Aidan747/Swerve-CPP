@@ -70,6 +70,8 @@ void SwerveModule::setState(frc::SwerveModuleState state) {
     state = state.Optimize(state, getState().angle);
     double motorSpeed = (double) (state.speed / Constants::ModuleConstants::maxSpeed);
     driveMotor->Set(motorSpeed);
-    turnMotor->Set(PIDCtrl->Calculate(getTurningMotorPostion(), state.angle.Radians()))
+    double radianRaw = (double) getTurningMotorPostion();
+    double setpointRaw = (double) state.angle.Radians();
+    turnMotor->Set(PIDCtrl->Calculate(radianRaw, setpointRaw));
 }
 
