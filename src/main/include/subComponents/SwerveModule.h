@@ -4,8 +4,15 @@
 
 #include <ctre/Phoenix.h>
 #include <rev/CANSparkMax.h>
+#include <ctre/phoenix/sensors/CANCoder.h>
+#include <Constants.h>
 #include <frc/Encoder.h>
 #include <frc/AnalogInput.h>
+#include <frc/kinematics/SwerveModuleState.h>
+#include <units/time.h>
+#include <units/velocity.h>
+#include <units/angular_velocity.h>
+#include <wpi/numbers>
 #include <memory>
 #include <string>
 #include <math.h>
@@ -34,10 +41,14 @@ class SwerveModule {
         SwerveModule(int driveMotorID, int turnMotorID, bool driveMotorReversed, bool turnMotorReversed, int encoderID, double absEncoderOffset, bool absEncoderReversed);
         SwerveModule();
         double getDriveMotorPosition();
-        double getTurningMotorPostion();
-        double getDriveMotorVelocity();
+        units::radian_t getTurningMotorPostion();
+        units::velocity::meters_per_second_t getDriveMotorVelocity();
         double getTurningMotorVelocity();
         double getAbsEncoderRadians();
+        void resetEncoders();
+        frc::SwerveModuleState getState();
+        void setState(frc::SwerveModuleState state);
+        double getRawTurningMotorPosition();
 
     private:
       

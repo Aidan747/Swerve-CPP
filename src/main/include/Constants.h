@@ -24,21 +24,23 @@ namespace Constants
     }
     namespace DriveTrainConstants
     {
-        int fowardRightDriveMotorID = 1;
-        int fowardRightTurnMotorID = 2;
-        int backRightDriveMotorID = 3;
-        int backRightTurnMotorID = 4;
-        int fowardLeftDriveMotorID = 5;
-        int fowardLeftTurnMotorID = 6;
-        int backLeftDriveMotorID = 7;
-        int backLeftTurnMotorID = 8;
+        constexpr int fowardRightDriveMotorID = 1;
+        constexpr int fowardRightTurnMotorID = 2;
+        constexpr int backRightDriveMotorID = 3;
+        constexpr int backRightTurnMotorID = 4;
+        constexpr int fowardLeftDriveMotorID = 5;
+        constexpr int fowardLeftTurnMotorID = 6;
+        constexpr int backLeftDriveMotorID = 7;
+        constexpr int backLeftTurnMotorID = 8;
     }
     namespace ModuleConstants {
-        double wheelDiameterMeters = 0.1;
-        double turnMotorGearing = 1/18;
-        double driveMotorGearing = 1/5.8462;
-        double driveEncoderRotToMeter = driveMotorGearing * M_PI * wheelDiameterMeters;
-        double turningEncoderRotToRadians = turnMotorGearing * M_PI * 2;
+        constexpr double wheelDiameterMeters = 0.1;
+        constexpr double wheelDiameterInches = 5; /*?*/
+        constexpr double turnMotorGearing = 1/18;
+        constexpr double driveMotorGearing = 1/5.8462;
+        constexpr double driveEncoderRotToMeter = driveMotorGearing * M_PI * wheelDiameterMeters;
+        constexpr double turningEncoderRotToRadians = turnMotorGearing * M_PI * 2;
+        constexpr double maxSpeed = 8.2;
     }
 }
 

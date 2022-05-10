@@ -1,6 +1,7 @@
 
 
 #include "subComponents/SwerveModule.h"
+#include <frc/MathUtil.h>
 
 
 #define wheelDiameter 15 // inches?
@@ -14,7 +15,7 @@ SwerveModule::SwerveModule(int driveMotorID, int turnMotorID, bool driveMotorRev
     this->absEncoderReversed = absEncoderReversed;
     //needs to be absolute encoder -- fix when we finish drivetrain
     this->moduleEncoder = new AnalogInput(encoderID);
-
+    
     this->turnMotor = new CANSparkMax(turnMotorID, kBrushed);
     this->driveMotor = new CANSparkMax(driveMotorID, kBrushed);
     driveMotor->SetInverted(driveMotorReversed);
@@ -26,11 +27,14 @@ SwerveModule::SwerveModule(int driveMotorID, int turnMotorID, bool driveMotorRev
        and define them here, along with the motor.setPositionConversionFactor(<conversion factor>)
        & do the same for velocity. */
 
-    this->PIDCtrl = new frc::PIDController(0.02,0,0);
+    this->PIDCtrl = new frc::PIDController(0.02, 0, 0);
     PIDCtrl->EnableContinuousInput(-M_PI,M_PI);
+
+    resetEncoders();
 }
 double SwerveModule::getAbsEncoderRadians() {
     /* 5 is the total voltage being supplied to the encoder */
+    /* fix when we have final encoder */
     double angle = moduleEncoder->GetVoltage() / 5;
     angle *= (M_PI * 2);
     angle -= absEncoderOffset;
@@ -39,14 +43,33 @@ double SwerveModule::getAbsEncoderRadians() {
 double SwerveModule::getDriveMotorPosition() {
     return driveMotor->GetEncoder().GetPosition();
 }
-double SwerveModule::getTurningMotorPostion() {
+units::radian_t SwerveModule::getTurningMotorPostion() {
+    units::radian_t out{turnMotor->GetEncoder().GetPosition()};
+    return out;
+}
+double SwerveModule::getRawTurningMotorPosition() {
     return turnMotor->GetEncoder().GetPosition();
 }
 double SwerveModule::getTurningMotorVelocity() {
     return turnMotor->GetEncoder().GetVelocity();
 }
-double SwerveModule::getDriveMotorVelocity() {
-    return driveMotor->GetEncoder().GetVelocity();
+units::velocity::meters_per_second_t SwerveModule::getDriveMotorVelocity() {
+    units::velocity::meters_per_second_t out{driveMotor->GetEncoder().GetVelocity()}; 
+    return out;
 }
-
+void SwerveModule::resetEncoders() {
+    driveMotor->GetEncoder().SetPosition(0);
+    turnMotor->GetEncoder().SetPosition(getAbsEncoderRadians());
+}
+frc::SwerveModuleState SwerveModule::getState() {
+    frc::SwerveModuleState out;
+    out.angle = frc::Rotation2d(getTurningMotorPostion());
+    out.speed = getDriveMotorVelocity();
+}
+void SwerveModule::setState(frc::SwerveModuleState state) {
+    state = state.Optimize(state, getState().angle);
+    double motorSpeed = (double) (state.speed / Constants::ModuleConstants::maxSpeed);
+    driveMotor->Set(motorSpeed);
+    turnMotor->Set(PIDCtrl->Calculate(getTurningMotorPostion(), state.angle.Radians()))
+}
 
