@@ -4,6 +4,7 @@
 
 #include "subComponents/utils/ALO.h"
 
+
 #define SHOOTER_REGRESSION(x) 2276.083 - (-84.4069/-0.05685471)*(1 - std::exp((0.05685471*x)))
 #define SPEED_CURVE(x) 0.6914895 + (0.08625241 - 0.6914895) / (1 + pow((inputSpeed / 0.3315671), 11.36875))
 
@@ -31,6 +32,15 @@ double ALO::curveSpeed(double inputSpeed) {
 double ALO::maxFromVector(std::vector<double> arr) {
     double max = *max_element(arr.begin(), arr.end());
     return max;
+}
+units::meters_per_second_t ALO::joystickToMS(double joystickInput) {
+    units::meters_per_second_t out{joystickInput * Constants::DriveTrainConstants::robotMaxSpeed};
+    return out;
+}
+units::radians_per_second_t ALO::joyToRad(double joystickInput) {
+    double scaled = joystickInput * 1.5;
+    units::radians_per_second_t out{scaled};
+    return out;
 }
 std::vector<double> ALO::pushToVector(std::vector<double> arr, double v1, double v2, double v3, double v4) {
     arr.push_back(v1);

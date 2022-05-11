@@ -10,6 +10,7 @@
 #include <frc/SPI.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include "subComponents/SwerveModule.h"
+#include <frc/kinematics/SwerveDriveKinematics.h>
 
 #define WIDTH 10
 #define HEIGHT 10
@@ -23,10 +24,19 @@ class DriveTrain : public frc2::SubsystemBase {
   DriveTrain(SwerveModule frontRight, SwerveModule frontLeft, SwerveModule backRight, SwerveModule backLeft);
 
   void drive(double xInput, double yInput, double zInput);
-
   void setAllMotors(double setpoint);
+  void resetGyro();
+  double getHeading();
+  frc::Rotation2d getRotation2d();
+  void stopModules();
+  void setModuleStates(frc::SwerveModuleState desiredStates[]);
+  //change, from center of robot
+  frc::Translation2d frontLeftLocation{0.381_m, 0.381_m};
+  frc::Translation2d frontRightLocation{0.381_m, -0.381_m};
+  frc::Translation2d backLeftLocation{-0.381_m, 0.381_m};
+  frc::Translation2d backRightLocation{-0.381_m, -0.381_m};
 
-
+  frc::SwerveDriveKinematics<4> kinematics{frontLeftLocation, frontRightLocation, backLeftLocation, backRightLocation};
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */

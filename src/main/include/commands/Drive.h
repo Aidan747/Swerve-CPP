@@ -8,6 +8,7 @@
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/DriveTrain.h"
 #include <frc/Joystick.h>
+#include <units/velocity.h>
 
 /**
  * An example command.
@@ -19,6 +20,9 @@
 class Drive : public frc2::CommandHelper<frc2::CommandBase, Drive> {
   DriveTrain driveTrainSub;
   double speed;
+  units::meters_per_second_t xInput;
+  units::meters_per_second_t yInput;
+  units::radians_per_second_t zInput;
  public:
   Drive() = default;
   Drive(DriveTrain driveTrainSub);

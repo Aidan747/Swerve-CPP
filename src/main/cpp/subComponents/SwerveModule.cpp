@@ -66,12 +66,23 @@ frc::SwerveModuleState SwerveModule::getState() {
     out.angle = frc::Rotation2d(getTurningMotorPostion());
     out.speed = getDriveMotorVelocity();
 }
+void SwerveModule::stop() {
+    driveMotor->Set(0);
+    turnMotor->Set(0);
+
+}
 void SwerveModule::setState(frc::SwerveModuleState state) {
+    if(abs(state.speed() < 0.001)) {
+        stop();
+        return;
+    }
     state = state.Optimize(state, getState().angle);
+
+    //typecasting for PID Controller
     double motorSpeed = (double) (state.speed / Constants::ModuleConstants::maxSpeed);
-    driveMotor->Set(motorSpeed);
     double radianRaw = (double) getTurningMotorPostion();
     double setpointRaw = (double) state.angle.Radians();
+    driveMotor->Set(motorSpeed);
     turnMotor->Set(PIDCtrl->Calculate(radianRaw, setpointRaw));
 }
 

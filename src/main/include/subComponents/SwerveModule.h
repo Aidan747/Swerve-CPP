@@ -49,6 +49,7 @@ class SwerveModule {
         frc::SwerveModuleState getState();
         void setState(frc::SwerveModuleState state);
         double getRawTurningMotorPosition();
+        void stop();
 
     private:
       

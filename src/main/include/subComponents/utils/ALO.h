@@ -9,6 +9,9 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include <units/velocity.h>
+#include <Constants.h>
+#include <units/angular_velocity.h>
 
 // Arithmatic Logic Operator
 
@@ -19,9 +22,11 @@ class ALO {
   double curveSpeed(double joystickInput);
   double getRPMFromDistance(double distanceKey);
   void initialize();
+  units::meters_per_second_t joystickToMS(double joystickInput);
   std::vector<double> pushToVector(std::vector<double> arr, double v1, double v2, double v3, double v4);
   double maxFromVector(std::vector<double> arr);
   double convertToAbsolute(double encoderValue);
+  units::radians_per_second_t joyToRad(double joystickInput);
 
  private:
   double differenceFromKey;

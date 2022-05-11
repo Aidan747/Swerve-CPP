@@ -6,7 +6,7 @@
 #define Constants_H
 
 #include <cmath>
-
+#include <units/velocity.h>
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -24,6 +24,7 @@ namespace Constants
     }
     namespace DriveTrainConstants
     {
+        constexpr units::meters_per_second_t robotMaxSpeed{5};
         constexpr int fowardRightDriveMotorID = 1;
         constexpr int fowardRightTurnMotorID = 2;
         constexpr int backRightDriveMotorID = 3;
