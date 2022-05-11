@@ -24,7 +24,7 @@ namespace Constants
     }
     namespace DriveTrainConstants
     {
-        constexpr units::meters_per_second_t robotMaxSpeed{5};
+        constexpr units::meters_per_second_t robotMaxSpeed{3.5};
         constexpr int fowardRightDriveMotorID = 1;
         constexpr int fowardRightTurnMotorID = 2;
         constexpr int backRightDriveMotorID = 3;
@@ -37,8 +37,8 @@ namespace Constants
     namespace ModuleConstants {
         constexpr double wheelDiameterMeters = 0.1;
         constexpr double wheelDiameterInches = 5; /*?*/
-        constexpr double turnMotorGearing = 1/18;
-        constexpr double driveMotorGearing = 1/5.8462;
+        constexpr double turnMotorGearing = 48/40;
+        constexpr double driveMotorGearing = 1/6/67;
         constexpr double driveEncoderRotToMeter = driveMotorGearing * M_PI * wheelDiameterMeters;
         constexpr double turningEncoderRotToRadians = turnMotorGearing * M_PI * 2;
         constexpr double maxSpeed = 8.2;
